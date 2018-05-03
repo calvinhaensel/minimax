@@ -69,15 +69,50 @@ class Board:
     # If the human has won, return -1. Otherwise, return 0.
     # READER EXERCISE: YOU MUST COMPLETE THIS FUNCTION
     def eval(self):
-        pass
+        if self.items[0][0] == self.items[0][1] == self.items[0][2] == -1:
+            return -1
+        if self.items[1][0] == self.items[1][1] == self.items[1][2] == -1:
+            return -1   
+        if self.items[2][0] == self.items[2][1] == self.items[2][2] == -1:
+            return -1
+        if self.items[0][0] == self.items[1][0] == self.items[2][0] == -1:
+            return -1
+        if self.items[0][1] == self.items[1][1] == self.items[2][1] == -1:
+            return -1
+        if self.items[0][2] == self.items[1][2] == self.items[2][2] == -1:
+            return -1
+        if self.items[0][0] == self.items[1][1] == self.items[2][2] == -1:
+            return -1
+        if self.items[2][0] == self.items[1][1] == self.items[0][2] == -1:
+            return -1
+        if self.items[0][0] == self.items[0][1] == self.items[0][2] == 1:
+            return 1
+        if self.items[1][0] == self.items[1][1] == self.items[1][2] == 1:
+            return 1   
+        if self.items[2][0] == self.items[2][1] == self.items[2][2] == 1:
+            return 1
+        if self.items[0][0] == self.items[1][0] == self.items[2][0] == 1:
+            return 1
+        if self.items[0][1] == self.items[1][1] == self.items[2][1] == 1:
+            return 1
+        if self.items[0][2] == self.items[1][2] == self.items[2][2] == 1:
+            return 1
+        if self.items[0][0] == self.items[1][1] == self.items[2][2] == 1:
+            return 1
+        if self.items[2][0] == self.items[1][1] == self.items[0][2] == 1:
+            return 1        
+        return 0
+                
+                
 
     # This method should return True if the board 
     # is completely filled up (no dummy turtles). 
     # Otherwise, it should return False.
     # READER EXERCISE: YOU MUST COMPLETE THIS FUNCTION
     def full(self):
-        pass
-    
+        if self.items[0][0] == self.items[0][1] == self.items[0][2] == self.items[1][0] == self.items[1][1] == self.items[1][2] == self.items[2][0] == self.items[2][1] == self.items[2][2]:
+            return True
+        return False
     # This method should draw the X's and O's
     # Of this board on the screen. 
     def drawXOs(self):
@@ -148,7 +183,7 @@ class O(RawTurtle):
 # the board is full.    
 # READER EXERCISE: YOU MUST COMPLETE THIS FUNCTION
 def minimax(player,board):
-    pass
+    pass            
 
       
 
