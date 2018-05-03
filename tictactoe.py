@@ -183,8 +183,17 @@ class O(RawTurtle):
 # the board is full.    
 # READER EXERCISE: YOU MUST COMPLETE THIS FUNCTION
 def minimax(player,board):
-    pass            
-
+    if board.eval() == 1 or board.eval() == -1 or board.full == True:            
+        return board.eval()
+    for row in range(3):
+        for col in range(3):
+            if board.items[row][col] != player * -1 and board.items[row][col] != player:
+                board.items[row][col] == player
+                if board.items[row][col] == 1 and board.eval() == 1:
+                    return minimax(player * -1, board)
+    
+            
+    
       
 
 class TicTacToe(tkinter.Frame):
@@ -271,6 +280,21 @@ class TicTacToe(tkinter.Frame):
             # contain the best move for the computer. For instance,
             # if the best move is in the first row and third column
             # then maxMove would be (0,2).
+            
+            for r in range(3):
+                for c in range(3):
+                    if board.items[r][c] != 1 and board.items[r][c] != -1:
+                        if minimax(1,board) == 1:
+                            board[r][c] == 1
+                            maxMove = r, c
+                            break
+                        elif minimax(1, board) == -1:
+                            continue
+                        elif minimax(1, board) == 0:
+                            maxMove = r, c
+                            continue
+                            
+            
 	    
             row, col = maxMove
             board[row][col] = X(cv)
