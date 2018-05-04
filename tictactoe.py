@@ -48,7 +48,7 @@ class Board:
     # represent exactly the same state. 
     # READER EXERCISE: YOU MUST COMPLETE THIS FUNCTION
     def __eq__(self,other):
-        return (self.screen == other.screen and self.item == other.item)
+        return (self.screen == other.screen and self.items == other.items)
     
     # This method will mutate this board to contain all dummy 
     # turtles. This way the board can be reset when a new game
@@ -69,37 +69,37 @@ class Board:
     # If the human has won, return -1. Otherwise, return 0.
     # READER EXERCISE: YOU MUST COMPLETE THIS FUNCTION
     def eval(self):
-        if self.items[0][0] == self.items[0][1] == self.items[0][2] == -1:
+        if self.items[0][0] == self.items[0][1] == self.items[0][2] == O():   
             return -1
-        if self.items[1][0] == self.items[1][1] == self.items[1][2] == -1:
+        if self.items[1][0] == self.items[1][1] == self.items[1][2] == O():
             return -1   
-        if self.items[2][0] == self.items[2][1] == self.items[2][2] == -1:
+        if self.items[2][0] == self.items[2][1] == self.items[2][2] == O():
             return -1
-        if self.items[0][0] == self.items[1][0] == self.items[2][0] == -1:
+        if self.items[0][0] == self.items[1][0] == self.items[2][0] == O():
             return -1
-        if self.items[0][1] == self.items[1][1] == self.items[2][1] == -1:
+        if self.items[0][1] == self.items[1][1] == self.items[2][1] == O():
             return -1
-        if self.items[0][2] == self.items[1][2] == self.items[2][2] == -1:
+        if self.items[0][2] == self.items[1][2] == self.items[2][2] == O():
             return -1
-        if self.items[0][0] == self.items[1][1] == self.items[2][2] == -1:
+        if self.items[0][0] == self.items[1][1] == self.items[2][2] == O():
             return -1
-        if self.items[2][0] == self.items[1][1] == self.items[0][2] == -1:
+        if self.items[2][0] == self.items[1][1] == self.items[0][2] == O():
             return -1
-        if self.items[0][0] == self.items[0][1] == self.items[0][2] == 1:
+        if self.items[0][0] == self.items[0][1] == self.items[0][2] == X():
             return 1
-        if self.items[1][0] == self.items[1][1] == self.items[1][2] == 1:
+        if self.items[1][0] == self.items[1][1] == self.items[1][2] == X():
             return 1   
-        if self.items[2][0] == self.items[2][1] == self.items[2][2] == 1:
+        if self.items[2][0] == self.items[2][1] == self.items[2][2] == X():
             return 1
-        if self.items[0][0] == self.items[1][0] == self.items[2][0] == 1:
+        if self.items[0][0] == self.items[1][0] == self.items[2][0] == X():
             return 1
-        if self.items[0][1] == self.items[1][1] == self.items[2][1] == 1:
+        if self.items[0][1] == self.items[1][1] == self.items[2][1] == X():
             return 1
-        if self.items[0][2] == self.items[1][2] == self.items[2][2] == 1:
+        if self.items[0][2] == self.items[1][2] == self.items[2][2] == X():
             return 1
-        if self.items[0][0] == self.items[1][1] == self.items[2][2] == 1:
+        if self.items[0][0] == self.items[1][1] == self.items[2][2] == X():
             return 1
-        if self.items[2][0] == self.items[1][1] == self.items[0][2] == 1:
+        if self.items[2][0] == self.items[1][1] == self.items[0][2] == X():
             return 1        
         return 0
                 
@@ -110,9 +110,15 @@ class Board:
     # Otherwise, it should return False.
     # READER EXERCISE: YOU MUST COMPLETE THIS FUNCTION
     def full(self):
-        if self.items[0][0] == self.items[0][1] == self.items[0][2] == self.items[1][0] == self.items[1][1] == self.items[1][2] == self.items[2][0] == self.items[2][1] == self.items[2][2]:
-            return True
-        return False
+        for r in range(3):
+            for c in range(3):
+                if self.items[r][c] != X() and self.items[r][c] != O():
+                    return False
+        return True
+        
+        #if self.items[0][0] == self.items[0][1] == self.items[0][2] == self.items[1][0] == self.items[1][1] == self.items[1][2] == self.items[2][0] == self.items[2][1] == self.items[2][2] != X or O:
+            #return False
+        
     # This method should draw the X's and O's
     # Of this board on the screen. 
     def drawXOs(self):
@@ -137,6 +143,10 @@ class Dummy:
     
     def goto(self,x,y):
         pass
+    def __eq__(self, other):
+        return (type(self) == type(other))  
+    def __repr__(self):
+        return ' '    
     
 # In the X and O classes below the constructor begins by initializing the 
 # RawTurtle part of the object with the call to super().__init__(canvas). The
@@ -159,6 +169,11 @@ class X(RawTurtle):
     def eval(self):
         return Computer
     
+    def __eq__(self, other):
+        return (type(self) == type(other))  
+    def __repr__(self):
+        return 'X'
+    
 class O(RawTurtle):
     def __init__(self, canvas = None):
         if canvas != None:
@@ -171,6 +186,11 @@ class O(RawTurtle):
         
     def eval(self):
         return Human
+    
+    def __eq__(self, other):
+        return (type(self) == type(other))
+    def __repr__(self):
+        return 'O'    
 
 # The minimax function is given a player (1 = Computer, -1 = Human) and a
 # board object. When the player = Computer, minimax returns the maximum 
@@ -187,10 +207,12 @@ def minimax(player,board):
         return board.eval()
     for row in range(3):
         for col in range(3):
-            if board.items[row][col] != player * -1 and board.items[row][col] != player:
+            if board.items[row][col] != X() and board.items[row][col] != O():
                 board.items[row][col] == player
-                if board.items[row][col] == 1 and board.eval() == 1:
+                if board.items[row][col] == X() and board.eval() == 1 and player == 1:
                     return minimax(player * -1, board)
+                if board.items[row][col] == O() and board.eval() == -1 and player == -1:
+                    return minimax(player * -1, board)                
     
             
     
@@ -283,19 +305,19 @@ class TicTacToe(tkinter.Frame):
             
             for r in range(3):
                 for c in range(3):
-                    if board.items[r][c] != 1 and board.items[r][c] != -1:
+                    if board.items[r][c] != X() and board.items[r][c] != O():
                         if minimax(1,board) == 1:
-                            board[r][c] == 1
-                            maxMove = r, c
+                            board[r][c] == X()
+                            maxMove = (r, c)
                             break
                         elif minimax(1, board) == -1:
                             continue
                         elif minimax(1, board) == 0:
-                            maxMove = r, c
+                            maxMove = (r, c)
                             continue
                             
             
-	    
+            print(minimax(1, board))
             row, col = maxMove
             board[row][col] = X(cv)
             self.locked = False
