@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+<head>
+   <meta charset="utf-8"/>
+   <title>Lab 1, CSC/CPE 203</title>
+   <link rel="stylesheet" href="../../lib/assignment.css" type="text/css">
+</head>
+
+<body>
+<div class="container">
+  <div class="boxed">
+
+  <div class="header">  <h1>Lab 1, CSC/CPE 203 - Python to Java (types)</h1></div>
+
+<h2>Orientation – Explicit Types, semi-colons, and curly braces</h2>
+<p>
+This lab is designed to highlight some of the differences between Python and 
+Java.  Many of the differences are purely syntactical.  Other features, 
+like for loops, function differently.  Those already familiar with Java 
+should finish the lab and then offer to help others.
+
+</p>
+<div class="header">
+<h2>Objectives</h2>
+</div>
+
+<ul>
+<li>To submit an assignment using github.
+<li>To translate a Python program to Java.
+<li>To develop and run a complete Java program.
+<li>To compile and run a Java program on unix1-5
+</ul>
+
+<div class="header">
+<h2>Resources</h2>
+</div>
+
+<ul>
+<li>Your peers</li>
+<li>Your instructor</li>
+<li>The <a href="~/cpe203/materials/labs/lab01">Java Standard Library </a>- Bookmark this web page, you will be using the Java Standard Library documentation regularly this quarter.</li>
+</ul>
+
+<div class="header">
+<h2>Administration</h2>
+</div>
+
+<p>Before you get started, you need to set things up.  Assuming you've created
+your git repositories as requested, you next need to copy this lab into your
+turnin directory.  Copy the directory lab01 to the turnin-XXX directory you
+created when you accepted the "turn in" assignment, where "XXX" is your
+github ID.  You'll do your work in this copy.  In Unix, you can copy a 
+file or directory using the <code>cp</code> command.
+For example, from the
+main directory for CSC 203, you can copy this lab into your turnin directory
+with:
+<blockquote><pre>cp -r materials/labs/lab01 turnin-XXX/ </pre></blockquote>
+where XXX is your github ID.
+<p>
+You need to create two files in your turnin-xxx directory:  <code>email.txt</code>
+and <code>name.txt</code>  In <code>email.txt</code>, put your @calpoly.edu e-mail
+address.  In <code>name.txt</code>, put your name, exactly as it appears in PolyLearn.
+<p>
+Be sure to read all of the directions in <code>materials/setup.txt</code>.
+In particular, make sure you create a repository called "turnin-XXX" (where
+XXX is your github login ID), by accepting the assignment link given in the
+first bullet point in <code>materials/setup.txt</code>.  This step is necessary
+for you to receive grades.
+<p>
+Completing the above steps will be part of your grade.
+</p>
+<div class="header">
+<h2>Ground Rules</h2>
+</div>
+
+<p>You may collaborate with your peers as much as you like on this lab. Labs are for your practice. Make sure you can do every lab!</p>
+
+<div class="header">
+<h2>Setup</h2>
+</div>
+
+<p>
+For this lab you are required to compile and run Java from the
+command-line.  
+</p>
+
+<p>
+To compile the java lab code file, type:
+<p>
+<code>javac Lab01.java</code>
+</p>
+To run the code then type:
+<p>
+<code>java Lab01</code>
+</p>
+
+ 
+<div class="header">
+<h2>Specification</h2>
+</div>
+ 
+<ol> 
+<li>The starting code is in a directory called <code>src</code>.  Throughout this class, we will always put source code in a directory called <code>src</code>.
+<li>From the starting code run <code>lab01.py</code>.  Make sure you understand how everything in this file works. If you need help (or haven’t learned Python) please ask me or a classmate to explain things.  You will NOT be tested on Python this quarter, but will need to understand this file enough to write an equivalent java version.
+ 
+<li> Now take a look at the file <code>Lab01.java</code>.  This file is incomplete and you will need to finish it.  Translate the given Python file to Java.  Please translate everything, including the comments!
+ 
+To compile your files, type:
+<p>
+<code>javac Lab01.java</code>
+</p>
+To run the code then type:
+<p>
+<code>java Lab01</code>
+</p>
+</ol>
+
+<div class="header">
+<h2>Submitting the Lab</h2>
+</div>
+
+<p>Commit your working program to Github.  See 
+<code>info/git_commands.txt</code> for details on
+the commands <code>git add</code>, <code>git commit</code>
+and <code>git push</code> that you use to do this.  By the day 
+after the due date, be prepared to demonstrate your working 
+program to your instructor, and show your source code.</p>
+<p>
+If you'd like to submit the lab one day late with a penalty of 5%, 
+please add a file called <code>late_5_percent_off.txt</code> to the 
+<code>lab01</code> directory.  If you'd like to submit the lab two 
+days late with a penalty of 15%, add a file called
+<code>late_15_percent_off.txt</code> to the <code>lab01</code>
+directory.  Make sure you add and push the late file.
+<p>
+After your code is working and submitted,
+check your submission using the <code>checkgit</code> command on the
+unix server.  If the autograder can't compile your lab for a reason that
+is caught by <code>checkgit</code>, you will get a zero on the lab.  To
+check your submission, on a Unix server type:
+<blockquote><pre>checkgit &lt;git-login> 203 lab01</pre></blockquote>
+<p>
+If it works, you will see the message "** Tests Passed **".  If not,
+you will see some kind of error message.  The error message might not tell
+you exactly what you need to change, but it should give an indication as
+to what is wrong.
+
+</div>
+</div>
+</body>
+</html>
